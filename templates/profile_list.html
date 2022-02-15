@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile list{% endblock title %}
+
+{% block others %}
+{% endblock others %}
+
+{% block content %}
+    <div>
+    {% for profile in profiles %}
+        <div style="border: solid 1px gray; padding:10px; width:200px;">
+            <a href="{% url 'core:movie_list' profile_id=profile.uuid %}">
+                <p class="text-gray-700 text-xl font-bold"> {{profile.name | slice:":1"}} </p>
+                <p class="text-gray-400 font-bold">{{ profile.name }}</p>
+            </a>
+        </div>
+    {% endfor %}
+        <div>
+            <a href="{% url 'core:profile_create' %}">
+                <p>Create profile</p>
+            </a>
+        </div>
+    </div>
+{% endblock content %}

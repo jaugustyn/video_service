@@ -2,10 +2,13 @@
 myenv/
 core/migrations/
 tailwind.config.js
+tailwind-default.config.js
 package.json
 package-lock.json
 pipfile.lock
 node_modules/
+static/css/input.css
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

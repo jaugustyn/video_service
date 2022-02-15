@@ -5,7 +5,7 @@ app_name = 'core'
 
 urlpatterns = [
     path('', Home.as_view()),
-    path('profile', ProfileList.as_view(), name='profile_list'),
+    path('profiles', ProfileList.as_view(), name='profile_list'),
     path('profile/create', ProfileCreate.as_view(), name='profile_create'),
     path('movies/<str:profile_id>', MovieList.as_view(), name='movie_list'),
     path('movie/details/<str:movie_id>', MovieDetails.as_view(), name='movie_details'),
