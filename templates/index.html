@@ -10,8 +10,8 @@
 {% block content %}
 
     {% include "navbar.html" %}
-    <header class="flex justify-center items-center min-h-screen bg-black bg-opacity-75 bg-no-repeat border-b-8 border-gray-600 showcase"  style="background-image: url('{% static 'background_netflix.jpg' %}');">
-        <div class="flex z-10 flex-col items-center py-32 h-full text-center text-gray-100 md:py-0">
+    <main class="flex min-h-screen items-center justify-center bg-dc-700  pb-56">
+        <div class="flex flex-col items-center justify-center text-center text-gray-100">
             <h1 class="w-10/12 text-4xl font-semibold text-center md:text-5xl md:w-3/4">
                 Unlimited movies, TV shows, and more.
             </h1>
@@ -21,74 +21,19 @@
             <h4 class="pb-3 text-sm md:text-lg">
                 Ready to watch? Enter your email to create or restart your membership.
             </h4>
-
             <div class="flex justify-center w-full">
-                <div class="flex justify-center items-center w-11/12 md:w-10/12">
-                    <input type="email" name="" id="" placeholder="Email address" class="block px-2 py-4 w-8/12 placeholder-gray-500 text-gray-900 bg-gray-50 rounded-tl-sm rounded-bl-sm outline-none md:py-5 md:w-3/4">
-                    <a href='{% url "account_signup" %}' class='md:w-1/4'>
-
-                        <button class="flex justify-center items-center px-2 py-4 font-medium rounded-tr-sm rounded-br-sm bg-primary_red md:font-normal md:px-0 md:text-2xl">
-                            <span>
-                                Get Started
-                            </span>
+                <div class="flex items-center justify-center w-11/12 md:w-10/12 shadow-2xl">
+                    <input type="email" name="" id="" placeholder="Email address" class="px-5 py-5 w-8/12 font-medium placeholder-gray-500 text-black bg-gray-100 rounded-md outline-none">
+                    <a href='{% url "account_signup" %}' class='md:w-4/12 bg-dc-600 rounded-md'>
+                        <button class="py-4 font-medium text-xl">
+                            <span class="text-center" style="padding: 12px">Get Started</span>
                             <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
                         </button>
                     </a>
                 </div>
             </div>
         </div>
-    </header>
-
-    <section class='flex flex-col items-center border-b-8 border-gray-900 md:flex-row' style="min-height: 70vh;">
-        <div class="flex flex-col justify-center p-5 text-center md:w-1/2 md:text-left md:p-10">
-            <h2 class="mb-4 text-4xl font-semibold md:text-5xl">
-                Enjoy on your TV.
-            </h2>
-            <h5 class="text-lg md:text-xl">
-                Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.
-            </h5>
-        </div>
-        <div class='flex justify-center items-center md:w-1/2'>
-            <img src="{% static 'tv.png' %}" class="w-8/12" alt="">
-        </div>
-    </section>
-
-    <section class='flex flex-col items-center border-b-8 border-gray-900 md:flex-row' style="min-height: 70vh;">
-        <div class='flex justify-center items-center md:w-1/2'>
-            <img src="{% static 'mobile-0819.jpg' %}" class="w-8/12" alt="">
-        </div>
-
-        <div class="flex flex-col justify-center p-5 text-center md:w-1/2 md:text-left md:p-10">
-            <h2 class="mb-4 text-4xl font-semibold md:text-5xl">
-                Download your shows to watch offline.
-            </h2>
-            <h5 class="text-lg md:text-xl">
-                Save your favorites easily and always have something to watch.
-            </h5>
-        </div>
-
-    </section>
-
-    <section class='flex flex-col items-center border-b-8 border-gray-900 md:flex-row' style="min-height: 70vh;">
-        <div class="flex flex-col justify-center p-5 text-center md:w-1/2 md:text-left md:p-10">
-            <h2 class="mb-4 text-4xl font-semibold md:text-5xl">
-                Create profiles for kids.
-            </h2>
-            <h5 class="text-lg md:text-xl">
-                Send kids on adventures with their favorite characters in a space made just for them—free with your membership.
-            </h5>
-        </div>
-        <div class='flex justify-center items-center md:w-1/2'>
-            <img src="{% static 'netflix_kid.png' %}" class="w-8/12" alt="">
-        </div>
-    </section>
-    <footer class="px-5 py-10">
-        <ul class="flex justify-between items-center">
-
-            <li>&copy; 2021</li>
-            <li> Made with Django and Tailwind</li>
-            <li>By OtchereDev</li>
-        </ul>
-    </footer>
+    </main>
+    {% include "footer.html" %}
 
 {% endblock content %}

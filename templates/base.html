@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock title %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default-style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         {% block others %}
 
         {% endblock others %}
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     {% block content %}
 
     {% endblock content %}

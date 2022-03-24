@@ -7,19 +7,26 @@
 {% endblock others %}
 
 {% block content %}
-    <div>
-    {% for profile in profiles %}
-        <div style="border: solid 1px gray; padding:10px; width:200px;">
-            <a href="{% url 'core:movie_list' profile_id=profile.uuid %}">
-                <p class="text-gray-700 text-xl font-bold"> {{profile.name | slice:":1"}} </p>
-                <p class="text-gray-400 font-bold">{{ profile.name }}</p>
+    {% include "navbar.html" %}
+
+    <main class="flex flex-col min-h-screen items-center justify-center bg-dc-700 pb-56 pt-24">
+        <div class="flex flex-wrap gap-8 text-center items-center justify-center text-gray-100 w-1/2">
+            {% for profile in profiles %}
+                <a href="{% url 'core:movie_list' profile_id=profile.uuid %}" class="flex flex-col border-4 border-gray-700 rounded-md w-56 h-48 shadow-2xl">
+                    <div class="grid h-full place-items-center text-red-800 text-4xl font-bold"> {{profile.name | slice:":1"}} </div>
+                    <hr class="border-2 border-gray-700">
+                    <div class="px-5 py-2 text-gray-100 font-bold">{{ profile.name }}</div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="flex mt-12">
+            <a href="{% url 'core:profile_create' %}" class="bg-dc-600 rounded-md px-5 shadow-2xl">
+                <button class="py-4 font-medium text-xl">
+                    <span class="text-gray-100">Create profile</span>
+                </button>
             </a>
         </div>
-    {% endfor %}
-        <div>
-            <a href="{% url 'core:profile_create' %}">
-                <p>Create profile</p>
-            </a>
-        </div>
-    </div>
+    </main>
+
+    {% include "footer.html" %}
 {% endblock content %}
