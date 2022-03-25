@@ -10,27 +10,31 @@
 
 {% block content %}
     {% include "navbar.html" %}
-    <main class='bg-primary_black min-h-screen w-full'>
-        <img src="../../media/{{ movie.flyer }}" alt="Movie flyer">
-        <div>
-            <h2 class="text-6xl font-semibold">{{ movie.title }}</h2>
-            <div class="flex my-4">
-                <h2 class="text-gray-200 text-3xl font-medium">Description
-                    <p class="text-gray-900">
-                        {{ movie.description }}
-                    </p>
-                </h2>
-                <a href="{% url 'core:movie_show' movie_id=movie.uuid %}">
-                    <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                        <ion-icon name="play" class="text-2xl"></ion-icon>
-                        <span class="ml-3 font-medium">Play</span>
-                    </button>
-                </a>
+    <main class="flex min-h-screen items-center justify-center bg-dc-700  py-40">
+        <div class="flex-none items-center justify-center text-center text-gray-100 w-4/5">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Movie flyer" class="w-1/4 aspect-video border-2 border-red-800 bg-red-800">
+            <div class="flex flex-col">
+                <h2 class="text-6xl font-semibold">{{ movie.title }}</h2>
+                <div class="flex my-4">
+                    <h2 class="text-gray-200 text-3xl font-medium">Description
+                        <p class="text-gray-900">
+                            {{ movie.description }}
+                        </p>
+                    </h2>
+                    <a href="{% url 'core:movie_show' movie_id=movie.uuid %}">
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md text-black">
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium">Play</span>
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
-        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
-            <div class="p-8 w-10/12 relative" >
-                {% if movie.type == 'seasonal' %}
+    </main>
+    {# SEASONAL MOVIE  #}
+    {% if movie.type == 'seasonal' %}
+        <section class='flex bg-black justify-center'>
+            <div class="" >
                 <div style='margin-top:2rem;margin-bottom:2rem;'>
                     <h2 class="text-gray-200 text-3xl font-medium">Episode</h2>
                     {% for episode in movie.videos.all %}
@@ -41,10 +45,9 @@
                         </h3>
                     {% endfor %}
                 </div>
-                {% endif %}
             </div>
         </section>
-        
-    </main>
-    
+    {% endif %}
+
+    {% include "footer.html" %}
 {% endblock content %}

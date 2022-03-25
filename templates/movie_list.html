@@ -4,25 +4,34 @@
 {% block title %}Profile list{% endblock title %}
 
 {% block others %}
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 {% endblock others %}
 
 {% block content %}
     {% include "navbar.html" %}
-    <div>
-    {% for movie in movies %}
-        <div style="border: solid 1px gray; padding:10px; width:200px;">
-            <a href="{% url 'core:movie_details' movie_id=movie.uuid %}">
-                <p class="text-gray-700 text-xl font-bold"> {{ movie.title }} </p>
-                <p class="text-gray-400">{{ movie.description }}</p>
-                <img src="../media/{{ movie.flyer }}">
-            </a>
-            <a href="{% url 'core:movie_show' movie_id=movie.uuid %}">
-                <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                    <ion-icon name="play" class="text-2xl"></ion-icon>
-                    <span class="ml-3 font-medium">Play</span>
-                </button>
-            </a>
+    <main class="relative flex min-h-screen items-start justify-center bg-dc-700 py-40">
+        <div class="flex flex-wrap gap-16 text-gray-100 justify-center ">
+            {% for movie in movies %}
+                <div class="flex flex-col">
+                    <div class="relative flex min-h-full hover:border-gray-100 border-transparent border-2 rounded-md w-56 aspect-square object-scale-down">
+                        <a href="{% url 'core:movie_details' movie_id=movie.uuid %}">
+                            <img src="../media/{{ movie.flyer }}" alt="Movie flyer" class="w-full h-full rounded-md">
+                            <p class="absolute text-center bottom-0 left-0 right-0 text-gray-100 text-xl font-bold opacity-50 mb-2 hover:opacity-100 hover-target"> {{ movie.title }} </p>
+                        </a>
+                    <div class="absolute flex justify-around items-center mt-4">
+                        <a href="{% url 'core:movie_show' movie_id=movie.uuid %}" class="flex">
+                            <button class="bg-red-800 py-2 px-3 rounded-r-md text-black opacity-50 hover:opacity-100">
+                                <div class="font-mono font-bold text-xs">
+                                    <ion-icon name="play" class="text-xl align-middle"></ion-icon>
+                                    <span class="align-middle">Play</span>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    </div>
+    </main>
+    {% include "footer.html" %}
 {% endblock content %}

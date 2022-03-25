@@ -7,19 +7,24 @@
 {% endblock others %}
 
 {% block content %}
-{#    {% include 'navbar.html' %}#}
-    <section class="" style='background-image:url("{% static "background_netflix.jpg" %}")'>
-        <div class="">
-            <form method='POST' class="">
-                {% if request.user.profiles.all|length > 5 %}
-                    <p>You cannot create more than 5 profiles.</p>
-                {% else %}
+    {% include 'navbar.html' %}
+    <main class="flex min-h-screen items-center justify-center bg-dc-700  pb-56">
+        <div class="flex flex-col items-center justify-center text-center text-gray-100">
+            {% if request.user.profiles.all|length >= 5 %}
+                <p class="font-bold text-3xl">You cannot have more than 5 profiles.</p>
+                <a href="{% url 'core:profile_list' %}" class="bg-dc-600 rounded-md px-5 shadow-2xl mt-12">
+                    <button class="py-4 font-medium text-xl">
+                        <span class="text-gray-100">Back to profile list</span>
+                    </button>
+                </a>
+            {% else %}
+                <form method='POST' class="">
                     {% csrf_token %}
                     <p>Create profile</p>
                     {{ form.errors }}
                     <div class="my-4">
                         <Label class="">Profile Name</Label>
-                        <input required class="" type="text" name="name" id="id_name" placeholder="Profile name">
+                        <input required class="text-black" type="text" name="name" id="id_name" placeholder="Profile name">
                     </div>
                     <div class="">
                         <Label class="">Maturity Level</Label>
@@ -32,8 +37,8 @@
                     <div class="">
                         <button class="">Create Profile</button>
                     </div>
-                {% endif %}
-            </form>
+                </form>
+            {% endif %}
         </div>
-    </section>
+    </main>
 {% endblock content %}

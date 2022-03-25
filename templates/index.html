@@ -4,7 +4,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block others %}
-<script src="https://pnpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 {% endblock others %}
 
 {% block content %}
@@ -12,22 +12,27 @@
     {% include "navbar.html" %}
     <main class="flex min-h-screen items-center justify-center bg-dc-700  pb-56">
         <div class="flex flex-col items-center justify-center text-center text-gray-100">
-            <h1 class="w-10/12 text-4xl font-semibold text-center md:text-5xl md:w-3/4">
+            <h1 class="w-10/12 text-4xl font-semibold text-center">
                 Unlimited movies, TV shows, and more.
             </h1>
-            <h3 class="py-5 text-xl md:text-xl">
+            <h3 class="py-5 text-xl">
                 Watch anywhere. Cancel anytime.
             </h3>
-            <h4 class="pb-3 text-sm md:text-lg">
+            <h4 class="pb-3 text-sm">
                 Ready to watch? Enter your email to create or restart your membership.
             </h4>
             <div class="flex justify-center w-full">
-                <div class="flex items-center justify-center w-11/12 md:w-10/12 shadow-2xl">
+                <div class="flex items-center justify-center w-11/12 shadow-2xl">
                     <input type="email" name="" id="" placeholder="Email address" class="px-5 py-5 w-8/12 font-medium placeholder-gray-500 text-black bg-gray-100 rounded-md outline-none">
-                    <a href='{% url "account_signup" %}' class='md:w-4/12 bg-dc-600 rounded-md'>
+                    <a href='{% url "account_signup" %}' class='w-4/12 bg-dc-600 rounded-md'>
                         <button class="py-4 font-medium text-xl">
-                            <span class="text-center" style="padding: 12px">Get Started</span>
-                            <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                            <div class="truncate">
+                                <div class="text-center font-medium">
+                                    <span>Get Started</span>
+                                    <ion-icon name="chevron-forward-outline" class="text-2xl -mb-1"></ion-icon>
+                                    <ion-icon name="chevron-forward-outline" class="text-2xl -mb-1 -ml-5"></ion-icon>
+                                </div>
+                            </div>
                         </button>
                     </a>
                 </div>
