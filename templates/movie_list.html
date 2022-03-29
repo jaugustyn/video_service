@@ -9,25 +9,25 @@
 
 {% block content %}
     {% include "navbar.html" %}
-    <main class="relative flex min-h-screen items-start justify-center bg-dc-700 py-40">
+    <main class="relative flex min-h-screen items-start justify-center bg-dc-700 py-40 bg-gradient-to-b from-dc-700 to-dc-800">
         <div class="flex flex-wrap gap-16 text-gray-100 justify-center ">
             {% for movie in movies %}
                 <div class="flex flex-col">
-                    <div class="relative flex min-h-full hover:border-gray-100 border-transparent border-2 rounded-md w-56 aspect-square object-scale-down">
+                    <div class="relative flex min-h-full hover:border-gray-100 border-transparent border-2 rounded-md w-56 aspect-square">
                         <a href="{% url 'core:movie_details' movie_id=movie.uuid %}">
-                            <img src="../media/{{ movie.flyer }}" alt="Movie flyer" class="w-full h-full rounded-md">
-                            <p class="absolute text-center bottom-0 left-0 right-0 text-gray-100 text-xl font-bold opacity-50 mb-2 hover:opacity-100 hover-target"> {{ movie.title }} </p>
+                            <img src="../media/{{ movie.flyer }}" alt="Movie flyer" class="w-full h-full rounded-md opacity-100">
+                            <p class="absolute text-center bottom-0 left-0 right-0 text-gray-100 text-xl font-bold mb-2 opacity-50 hover:opacity-100 hover-target"> {{ movie.title }} </p>
                         </a>
-                    <div class="absolute flex justify-around items-center mt-4">
-                        <a href="{% url 'core:movie_show' movie_id=movie.uuid %}" class="flex">
-                            <button class="bg-red-800 py-2 px-3 rounded-r-md text-black opacity-50 hover:opacity-100">
-                                <div class="font-mono font-bold text-xs">
-                                    <ion-icon name="play" class="text-xl align-middle"></ion-icon>
-                                    <span class="align-middle">Play</span>
-                                </div>
-                            </button>
-                        </a>
-                    </div>
+                        <div class="absolute flex justify-around items-center mt-4">
+                            <a href="{% url 'core:movie_show' movie_id=movie.uuid %}">
+                                <button class="bg-red-800 py-2 px-3 rounded-r-md text-black opacity-50 hover:opacity-100">
+                                    <div class="font-mono font-bold text-xs">
+                                        <ion-icon name="play" class="text-xl align-middle"></ion-icon>
+                                        <span class="align-middle">Play</span>
+                                    </div>
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

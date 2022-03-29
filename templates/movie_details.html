@@ -10,44 +10,61 @@
 
 {% block content %}
     {% include "navbar.html" %}
-    <main class="flex min-h-screen items-center justify-center bg-dc-700  py-40">
-        <div class="flex-none items-center justify-center text-center text-gray-100 w-4/5">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Movie flyer" class="w-1/4 aspect-video border-2 border-red-800 bg-red-800">
-            <div class="flex flex-col">
-                <h2 class="text-6xl font-semibold">{{ movie.title }}</h2>
-                <div class="flex my-4">
-                    <h2 class="text-gray-200 text-3xl font-medium">Description
-                        <p class="text-gray-900">
+    <main class="relative flex flex-col min-h-screen items-center justify-start bg-dc-700 pt-32 bg-gradient-to-b from-dc-700 to-dc-800">
+        <section class="static flex flex-wrap items-start text-gray-100 w-10/12">
+            <div class="flex max-w-3xl w-full aspect-video bg-dc-800 mb-20">
+                <video controls>
+                    <source src="" type="">
+                    Your browser does not support the video tag.
+                </video>
+{#                <img src="{{ movie.flyer.url }}" alt="Movie flyer" class="bg-dc-800 object-cover">#}
+            </div>
+            <div class="flex flex-grow flex-col mx-20">
+                <div class="text-4xl font-semibold text-center">{{ movie.title }}</div>
+                <div class="text-1xl text-white font-sans opacity-25 text-center my-2">
+                    <span>{{ movie.year_of_production }}</span>
+                    {% if movie.type == "Single" %}
+                        <span> | {{ movie.age_limit }} | </span>
+                        {% for genre in movie.genres.all %}
+                             <span>{{ genre.name }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span>{{ movie.num_of_seasons }} seasons</span>
+                    {% endif %}
+                </div>
+                <div class="max-w-fit min-w-min my-8">
+                    <h2 class="text-gray-200">
+                        <p class="text-2xl font-medium indent-8 whitespace-normal">
                             {{ movie.description }}
                         </p>
                     </h2>
+                </div>
+                <div class="flex items-center justify-center mt-12">
                     <a href="{% url 'core:movie_show' movie_id=movie.uuid %}">
-                        <button class="flex items-center bg-white py-2 px-5 rounded-md text-black">
+                        <button class="flex items-center bg-red-800 py-2 px-5 rounded-md text-black hover:bg-red-600">
                             <ion-icon name="play" class="text-2xl"></ion-icon>
                             <span class="ml-3 font-medium">Play</span>
                         </button>
                     </a>
                 </div>
             </div>
-        </div>
-    </main>
-    {# SEASONAL MOVIE  #}
-    {% if movie.type == 'seasonal' %}
-        <section class='flex bg-black justify-center'>
-            <div class="" >
-                <div style='margin-top:2rem;margin-bottom:2rem;'>
-                    <h2 class="text-gray-200 text-3xl font-medium">Episode</h2>
-                    {% for episode in movie.videos.all %}
-                        <h3 class='text-lg'>
-                            <a href="{% url 'core:play' movie_id=movie.uuid %}?epi={{forloop.counter0}}">
-                                {{ forloop.counter }} - {{ episode.title }}
-                            </a>
-                        </h3>
-                    {% endfor %}
-                </div>
+        </section>
+    {# SEASONAL MOVIES #}
+    {% if movie.type == 'Seasonal' %}
+        <section class="static flex flex-col justify-center mt-20 mb-32 w-10/12">
+            <h2 class="text-center text-gray-200 text-3xl font-medium mb-4">Episodes</h2>
+            <div class="flex flex-wrap gap-8 justify-center">
+                {% for episode in movie.videos.all %}
+                    <div class='flex text-lg w-56 aspect-video bg-gray-300'>
+                        <a href="{% url 'core:movie_show' movie_id=movie.uuid %}?epi={{forloop.counter0}}">
+                            s0{{ episode.season }}e0{{ episode.episode }} - {{ episode.title }}
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </section>
     {% endif %}
+    </main>
 
     {% include "footer.html" %}
 {% endblock content %}

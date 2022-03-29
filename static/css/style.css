@@ -1656,6 +1656,25 @@ video {
 .bg-zinc-900 {
   background-color: #1a202c;
 }
+.text-dc-400{
+    color: #52565b;
+}
+.text-dc-500{
+    color: #494c50;
+}
+.text-dc-600 {
+  color: #424549;
+}
+.text-dc-700 {
+  color: #36393e;
+}
+.text-dc-800 {
+  color: #282b30;
+}
+.text-dc-900 {
+  color: #1e2124;
+}
+/*       */
 .bg-dc-400{
     background-color: #52565b;
 }

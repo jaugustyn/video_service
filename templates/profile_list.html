@@ -9,7 +9,7 @@
 {% block content %}
     {% include "navbar.html" %}
 
-    <main class="flex flex-col min-h-screen items-center justify-center bg-dc-700 pb-56 pt-24">
+    <main class="flex flex-col min-h-screen items-center justify-center bg-dc-700 pb-56 pt-24 bg-gradient-to-b from-dc-700 to-dc-800">
         <div class="flex flex-wrap gap-8 text-center items-center justify-center text-gray-100 w-1/2">
             {% for profile in profiles %}
                 <a href="{% url 'core:movie_list' profile_id=profile.uuid %}" class="flex flex-col border-4 border-gray-700 rounded-md w-56 h-48 shadow-2xl">

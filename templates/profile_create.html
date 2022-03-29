@@ -8,7 +8,7 @@
 
 {% block content %}
     {% include 'navbar.html' %}
-    <main class="flex min-h-screen items-center justify-center bg-dc-700  pb-56">
+    <main class="flex min-h-screen items-center justify-center bg-dc-700 pb-56 bg-gradient-to-b from-dc-700 to-dc-800">
         <div class="flex flex-col items-center justify-center text-center text-gray-100">
             {% if request.user.profiles.all|length >= 5 %}
                 <p class="font-bold text-3xl">You cannot have more than 5 profiles.</p>
@@ -28,10 +28,10 @@
                     </div>
                     <div class="">
                         <Label class="">Maturity Level</Label>
-                        <select class=""  name="age_limit" id="id_age_limit" >
-                            <option value="Kid">Kid</option>
-                            <option value="Teenager">Teenager</option>
-                            <option value="Adult">Adult</option>
+                        <select class="text-black" name="age_limit" id="id_age_limit">
+                            <option value="Kids">Kids</option>
+                            <option value="Teenagers">Teenagers</option>
+                            <option value="Adults">Adults</option>
                         </select>
                     </div>
                     <div class="">

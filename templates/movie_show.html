@@ -3,9 +3,12 @@
 {% block title %} Netflix - Movie {% endblock title %}
 
 {% block content %}
-    <main class='bg-primary_black h-full w-full '>
-        {{ movie|json_script:"movie_data" }}
-        <video controls class="w-full h-screen player" style="width:50%"></video>
+    {% include "navbar.html" %}
+    <main class="justify-center min-h-screen bg-dc-700 py-40 bg-gradient-to-b from-dc-700 to-dc-800">
+        <div class="flex justify-center">
+            {{ movie|json_script:"movie_data" }}
+            <video controls class="h-full w-1/2 player"></video>
+        </div>
     </main>
     <script>
         const videoEl=document.querySelector('video')
@@ -16,4 +19,5 @@
         const video_param = parseInt(url.searchParams.get("epi")) ? parseInt(url.searchParams.get("epi")) : 0
         videoEl.setAttribute('src',`http://127.0.0.1:8000/media/${movie_data[video_param].file}`)
     </script>
+    {% include "footer.html" %}
 {% endblock content %}
